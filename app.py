@@ -4,7 +4,9 @@ import requests
 import base64
 from PIL import Image
 import io
+#import tkinter as tk
 from streamlit_pdf_viewer import pdf_viewer
+#import turtle
 
 
 
@@ -24,8 +26,21 @@ def get_prediction(image_data):
 
 
 #setting up the title
+st.markdown("""
+<style>
+body {
+    background-color: #00ff00;
+}
+</style>
+""", unsafe_allow_html=True)
 st.title("Welcome to Flower Image Classifier Web App!")#change according to your project   #edit 3
 
+#root=tk.Tk()
+#root.config(bg='light blue')
+#root.geometry(400,400)
+#root.title("Flower Image Classifier")
+#root.mainloop()
+#turtle.Screen().bgcolor(0,0,255)
 
 #creating the tabs for the web app
 
@@ -38,7 +53,7 @@ with tab1:
   st.subheader("File Uploader")#change according to your project
 
   #file uploader
-  image = st.file_uploader(label="Upload an image",accept_multiple_files=False, help="Upload an image to classify them")
+  image = st.file_uploader(label="Upload any flower image of(astilbe,bellflower,carnation) ",accept_multiple_files=False, help="Upload an image to classify them")
   if image:
     #converting the image to bytes
     img = Image.open(image)
@@ -90,6 +105,7 @@ with tab2:
 
   # URL of the PDF file in the GitHub repository
   # sample url -> "https://raw.githubusercontent.com/yourusername/yourrepository/branch/yourfile.pdf"
+  # https://github.com/arunamikkili/Flower_Demo/blob/main/sample.pdf
   pdf_url = "https://raw.githubusercontent.com/arunamikkili/Flower_Demo/main/sample.pdf"
 
   # Fetch the PDF file from GitHub
